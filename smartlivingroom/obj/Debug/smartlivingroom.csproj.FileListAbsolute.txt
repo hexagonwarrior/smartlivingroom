@@ -1,0 +1,12 @@
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.exe.config
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.exe
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.pdb
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csprojResolveAssemblyReference.cache
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.Form1.resources
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.Properties.Resources.resources
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csproj.GenerateResource.Cache
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.exe
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.pdb
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\NAudio.dll
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\NAudio.WindowsMediaFormat.dll
+c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\NAudio.xml
