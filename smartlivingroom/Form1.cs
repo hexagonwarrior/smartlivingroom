@@ -254,8 +254,6 @@ namespace smartlivingroom
         // 匹配识别结果，生成控制指令
         private STATE proc_cmd(string cmd)
         {
-            STATE instruct = STATE.INVALID;
-
             if (cmd != null)
             {
                 int state = -1; // invalid
@@ -285,13 +283,11 @@ namespace smartlivingroom
                 {
                     if (state == 0)
                     {
-                        instruct = STATE.TV_OFF;
-                        break;
+                        return STATE.TV_OFF;
                     }
                     else if (state == 1)
                     {
-                        instruct = STATE.TV_ON;
-                        break;
+                        return STATE.TV_ON;
                     }
                 }
 
@@ -300,17 +296,15 @@ namespace smartlivingroom
                 {
                     if (state == 0)
                     {
-                        instruct = STATE.LAMP_OFF;
-                        break;
+                        return STATE.LAMP_OFF;
                     }
                     else if (state == 1)
                     {
-                        instruct = STATE.LAMP_ON;
-                        break;
+                        return STATE.LAMP_ON;
                     }
                 }
             }
-            return instruct;
+            return STATE.INVALID;
         }
 
         private void make_sound(object p)
