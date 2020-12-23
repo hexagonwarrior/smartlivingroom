@@ -281,26 +281,30 @@ namespace smartlivingroom
                 // 匹配电视的关键字
                 foreach (string key in TV)
                 {
-                    if (state == 0)
-                    {
-                        return STATE.TV_OFF;
-                    }
-                    else if (state == 1)
-                    {
-                        return STATE.TV_ON;
+                    if (cmd.IndexOf(key) > -1) {
+                        if (state == 0)
+                        {
+                            return STATE.TV_OFF;
+                        }
+                        else if (state == 1)
+                        {
+                            return STATE.TV_ON;
+                        }
                     }
                 }
 
                 // 匹配台灯的关键字
                 foreach (string key in LAMP)
                 {
-                    if (state == 0)
-                    {
-                        return STATE.LAMP_OFF;
-                    }
-                    else if (state == 1)
-                    {
-                        return STATE.LAMP_ON;
+                    if (cmd.IndexOf(key) > -1) {
+                        if (state == 0)
+                        {
+                            return STATE.LAMP_OFF;
+                        }
+                        else if (state == 1)
+                        {
+                            return STATE.LAMP_ON;
+                        }
                     }
                 }
             }
