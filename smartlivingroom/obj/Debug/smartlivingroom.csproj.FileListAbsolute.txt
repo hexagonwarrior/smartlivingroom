@@ -10,3 +10,58 @@ c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartliv
 c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\NAudio.dll
 c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\NAudio.WindowsMediaFormat.dll
 c:\users\aliciaxu\documents\visual studio 2013\Projects\smartlivingroom\smartlivingroom\bin\Debug\NAudio.xml
+E:\Personal\homework\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.exe.config
+E:\Personal\homework\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.exe
+E:\Personal\homework\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.pdb
+E:\Personal\homework\smartlivingroom\smartlivingroom\bin\Debug\NAudio.dll
+E:\Personal\homework\smartlivingroom\smartlivingroom\bin\Debug\NAudio.WindowsMediaFormat.dll
+E:\Personal\homework\smartlivingroom\smartlivingroom\bin\Debug\NAudio.xml
+E:\Personal\homework\smartlivingroom\smartlivingroom\bin\Debug\Interop.WMPLib.dll
+E:\Personal\homework\smartlivingroom\smartlivingroom\bin\Debug\AxInterop.WMPLib.dll
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\Interop.MediaPlayer.dll
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\Interop.WMPLib.dll
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\AxInterop.WMPLib.dll
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csproj.ResolveComReference.cache
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.Form1.resources
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.Properties.Resources.resources
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csproj.GenerateResource.cache
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csproj.CoreCompileInputs.cache
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csproj.CopyComplete
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.exe
+E:\Personal\homework\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.pdb
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.exe.config
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\Interop.MediaPlayer.dll
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\Interop.WMPLib.dll
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csproj.ResolveComReference.cache
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.exe
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.pdb
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.exe
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\bin\Debug\smartlivingroom.pdb
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\bin\Debug\NAudio.dll
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\bin\Debug\NAudio.WindowsMediaFormat.dll
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\bin\Debug\NAudio.xml
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\bin\Debug\Interop.WMPLib.dll
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csprojResolveAssemblyReference.cache
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.Form1.resources
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.Properties.Resources.resources
+C:\Users\aliciaxu\Pictures\smartlivingroom\smartlivingroom\obj\Debug\smartlivingroom.csproj.GenerateResource.Cache
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\bin\Debug\smartlivingroom.exe.config
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\Interop.MediaPlayer.dll
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\Interop.WMPLib.dll
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\smartlivingroom.csproj.ResolveComReference.cache
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\smartlivingroom.exe
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\smartlivingroom.pdb
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\bin\Debug\smartlivingroom.exe
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\bin\Debug\smartlivingroom.pdb
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\bin\Debug\NAudio.dll
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\bin\Debug\NAudio.WindowsMediaFormat.dll
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\bin\Debug\NAudio.xml
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\bin\Debug\Interop.WMPLib.dll
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\smartlivingroom.csprojResolveAssemblyReference.cache
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\smartlivingroom.Form1.resources
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\smartlivingroom.Properties.Resources.resources
+C:\Users\aliciaxu\Documents\Visual Studio 2013\Projects\smartlivingroom.git\smartlivingroom\obj\Debug\smartlivingroom.csproj.GenerateResource.Cache

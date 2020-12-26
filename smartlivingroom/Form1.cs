@@ -18,14 +18,8 @@ namespace smartlivingroom
 {
     public partial class Form1 : Form
     {
-        [DllImport("winmm.dll", SetLastError = true)]
-        static extern long mciSendString(string strCommand, StringBuilder strReturn, int iReturnLength, IntPtr hwndCallback);
-
-        private readonly List<string> ON = new List<string>() { "打", "开", "把"};
-        private readonly List<string> OFF = new List<string>() { "关", "观", "官"};
-        private readonly List<string> TV = new List<string>() { "电", "视", "机", "击", "鸡", "看" };
-        private readonly List<string> LAMP = new List<string>() { "台", "灯" };
-            
+        private readonly List<string> ON = new List<string>() { "打", "开", "把", "看", "大" };
+        private readonly List<string> OFF = new List<string>() { "关", "闭", "观", "官", "管", "不", "安", "利" };
 
         // const
         private const int LAMP_X = 13;
@@ -34,7 +28,10 @@ namespace smartlivingroom
         private const int TV_Y = 100;
         private const int STEREO_X = 247;
         private const int STEREO_Y = 380;
-        private string AUDIO_FILE = "temp/cmd.wav";
+        private const int LEFT_X = 149;
+        private const int LEFT_Y = 378;
+        private const int RIGHT_X = 413;
+        private const int RIGHT_Y = 378;
 
         enum STATE
         {
@@ -56,7 +53,8 @@ namespace smartlivingroom
 
         private STATE lamp_state = STATE.LAMP_OFF;
         private STATE tv_state = STATE.TV_OFF;
-
+        
+        private bool playing_sound = false;
         public Form1()
         {
             InitializeComponent();
@@ -67,9 +65,23 @@ namespace smartlivingroom
             client = new Baidu.Aip.Speech.Asr(API_KEY, SECRET_KEY);
             client.Timeout = 60000;
 
+            string synthesisVoiceFile = "sound/tv_on.mp3";
+            Synthesis("已经为您打开了家庭影院", synthesisVoiceFile);
+
+            synthesisVoiceFile = "sound/tv_off.mp3";
+            Synthesis("已经为您关闭了家庭影院", synthesisVoiceFile);
+
+            synthesisVoiceFile = "sound/lamp_on.mp3";
+            Synthesis("已经为您打开了台灯", synthesisVoiceFile);
+
+            synthesisVoiceFile = "sound/lamp_off.mp3";
+            Synthesis("已经为您关闭了台灯", synthesisVoiceFile);
+
             ThreadStart ts = new ThreadStart(record_thread);
             Thread t = new Thread(ts);
             t.Start();
+
+            ShowImage(STATE.LAMP_ON);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -82,13 +94,19 @@ namespace smartlivingroom
             if (lamp_state == STATE.LAMP_OFF)
             {
                 // recognize("audio/LAMP_ON.wav");
-                set(STATE.LAMP_ON);
+                ShowImage(STATE.LAMP_ON);
+
+                PlayCommandVoice(STATE.LAMP_ON);
             }
             else
             {
                 // recognize("audio/LAMP_OFF.wav");
-                set(STATE.LAMP_OFF);
+                ShowImage(STATE.LAMP_OFF);
+
+                PlayCommandVoice(STATE.LAMP_OFF);
             }
+
+            
         }
 
         private void tv_button_Click(object sender, EventArgs e)
@@ -96,16 +114,20 @@ namespace smartlivingroom
             if (tv_state == STATE.TV_OFF)
             {
                 // recognize("audio/TV_ON.wav");
-                set(STATE.TV_ON);
+                ShowImage(STATE.TV_ON);
+
+                PlayCommandVoice(STATE.TV_ON);
             }
             else
             {
                 // recognize("audio/TV_OFF.wav");
-                set(STATE.TV_OFF);
+                ShowImage(STATE.TV_OFF);
+
+                PlayCommandVoice(STATE.TV_OFF);
             }
         }
 
-        private void set(STATE state)
+        private void ShowImage(STATE state)
         {
             Image img;
             Graphics g = Graphics.FromImage(livingroom);
@@ -129,14 +151,24 @@ namespace smartlivingroom
                     img = Image.FromFile("image/stereo_on.jpeg");
                     g.DrawImage(img, STEREO_X, STEREO_Y, img.Width, img.Height);
 
+                    img = Image.FromFile("image/lamp_off.jpeg");
+                    g.DrawImage(img, LAMP_X, LAMP_Y);
+
+                    img = Image.FromFile("image/left.jpeg");
+                    g.DrawImage(img, LEFT_X, LEFT_Y);
+
+                    img = Image.FromFile("image/right.jpeg");
+                    g.DrawImage(img, RIGHT_X, RIGHT_Y);
+
                     tv_state = state;
                     break;
                 case STATE.TV_OFF:
-                    img = Image.FromFile("image/tv_off.jpeg");
-                    g.DrawImage(img, TV_X, TV_Y);
 
-                    img = Image.FromFile("image/stereo_off.jpeg");
-                    g.DrawImage(img, STEREO_X, STEREO_Y, img.Width, img.Height);
+                    livingroom = Image.FromFile("image/livingroom.jpeg");
+                    g = Graphics.FromImage(livingroom);
+
+                    img = Image.FromFile("image/lamp_on.jpeg");
+                    g.DrawImage(img, LAMP_X, LAMP_Y);
 
                     tv_state = state;
                     break;
@@ -145,14 +177,16 @@ namespace smartlivingroom
             }
 
             pictureBox1.Image = livingroom;
-            make_sound(state);
         }
 
         // 声音按键录制，按record开始，按stop结束
         private void record_button_Click(object sender, EventArgs e)
         {
+            record_button.Enabled = false;
+            stop_button.Enabled = true;
+
             waveIn = new WaveInEvent();
-            writer = new WaveFileWriter(AUDIO_FILE, waveIn.WaveFormat);
+            writer = new WaveFileWriter("temp/cmd.wav", waveIn.WaveFormat);
 
             waveIn.DataAvailable += (s, a) =>
             {
@@ -174,6 +208,9 @@ namespace smartlivingroom
         private void stop_button_Click(object sender, EventArgs e)
         {
             waveIn.StopRecording();
+
+            record_button.Enabled = true;
+            stop_button.Enabled = false;
         }
 
         // 声音循环录制
@@ -205,13 +242,20 @@ namespace smartlivingroom
 
                 try
                 {
-                    rwaveIn.StartRecording();
-                    Thread.Sleep(4000);
-                    rwaveIn.StopRecording();
+                    if (playing_sound == true)
+                    {
+                        Thread.Sleep(4000); // 如果在播报中，暂停录音
+                    }
+                    else
+                    {
+                        rwaveIn.StartRecording();
+                        Thread.Sleep(4000);
+                        rwaveIn.StopRecording();
+                    }
                 }
                 catch (Exception ex)
                 {
- 
+                    // MessageBox.Show(ex.Message);
                 }
 
                 // 识别
@@ -219,10 +263,8 @@ namespace smartlivingroom
                 
 
                 Console.WriteLine("Record round " + (i++));
-                //Thread.Sleep(1000);
             }
         }
-
 
         // 调用百度语音接口对语音文件进行识别
         private void recognize(string filename)
@@ -236,35 +278,33 @@ namespace smartlivingroom
 
                 client.Timeout = 60000;
                 var result = client.Recognize(data, "wav", 16000, options);
-                // Console.WriteLine(result);
-            
+
                 cmd = result["result"][0].ToString();
                 Console.WriteLine(cmd);
 
-                STATE instruct = proc_cmd(cmd);
-                set(instruct);
+                var state = IdentifyCommand(cmd);
+
+                ShowImage(state);
+                PlayCommandVoice(state);
             }
-            catch (Exception ex) 
-            { 
-                
+            catch (Exception ex)
+            {
+                // MessageBox.Show(ex.Message);
             }
         }
 
 
         // 匹配识别结果，生成控制指令
-        private STATE proc_cmd(string cmd)
+        private STATE IdentifyCommand(string cmd)
         {
             if (cmd != null)
             {
-                int state = -1; // invalid
-
                 // 匹配ON的关键字
                 foreach (string key in ON)
                 {
                     if (cmd.IndexOf(key) > -1)
                     {
-                        state = 1; // on
-                        break;
+                        return STATE.TV_ON;
                     }
                 }
 
@@ -273,83 +313,83 @@ namespace smartlivingroom
                 {
                     if (cmd.IndexOf(key) > -1)
                     {
-                        state = 0; // off
-                        break;
-                    }
-                }
-
-                // 匹配电视的关键字
-                foreach (string key in TV)
-                {
-                    if (cmd.IndexOf(key) > -1) {
-                        if (state == 0)
-                        {
-                            return STATE.TV_OFF;
-                        }
-                        else if (state == 1)
-                        {
-                            return STATE.TV_ON;
-                        }
-                    }
-                }
-
-                // 匹配台灯的关键字
-                foreach (string key in LAMP)
-                {
-                    if (cmd.IndexOf(key) > -1) {
-                        if (state == 0)
-                        {
-                            return STATE.LAMP_OFF;
-                        }
-                        else if (state == 1)
-                        {
-                            return STATE.LAMP_ON;
-                        }
+                        return STATE.TV_OFF;
                     }
                 }
             }
+
             return STATE.INVALID;
         }
 
-        private void make_sound(object p)
+        private void PlayCommandVoice(object p)
         {
+            playing_sound = true;
             if ((STATE)p == STATE.TV_ON)
             {
-                play_mp3("sound/TV_ON.mp3");
+                play_mp3("sound/tv_on.mp3");
+                // play_mp3("sound/madmachine.mp3");
             }
             else if ((STATE)p == STATE.TV_OFF)
             {
-                play_mp3("sound/TV_OFF.mp3");
+                play_mp3("sound/tv_off.mp3");
             }
             else if ((STATE)p == STATE.LAMP_ON)
             {
-                play_mp3("sound/LAMP_ON.mp3");
+                play_mp3("sound/lamp_on.mp3");
             }
             else if ((STATE)p == STATE.LAMP_OFF)
             {
-                play_mp3("sound/LAMP_OFF.mp3");
+                play_mp3("sound/lamp_off.mp3");
             }
+            playing_sound = false;
         }
 
         //语音播报
         private void play_mp3(string text)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("open ");
-            sb.Append(text);
-            sb.Append(" alias temp_alias");
-            // 播放音频文件
-            mciSendString(sb.ToString(), null, 0, IntPtr.Zero);
-            mciSendString("play temp_alias", null, 0, IntPtr.Zero);
-            // 等待播放结束
-            StringBuilder strReturn = new StringBuilder(64);
-            do
+            using (BackgroundWorker worker = new BackgroundWorker())
             {
-                mciSendString("status temp_alias mode", strReturn, 64, IntPtr.Zero);
-            } while (!strReturn.ToString().Contains("stopped"));
-            // 关闭音频文件
-            mciSendString("close temp_alias", null, 0, IntPtr.Zero);
+                WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+                worker.DoWork += (s, e) =>
+                {
+                    try {
+                        wplayer.URL = text;
+                        wplayer.controls.play();
+                        Thread.Sleep(500);
+                    }
+                    catch
+                    {
+                        
+                    }
+                };
+
+                worker.RunWorkerAsync();
+            }
         }
 
+        public void Synthesis(string words, string voiceFilePath)
+        {
+            var client = new Baidu.Aip.Speech.Tts(API_KEY, SECRET_KEY);
+            client.Timeout = 60000;
+
+            var option = new Dictionary<string, object>()
+            {
+                {"spd", 5}, // 语速
+                {"vol", 7}, // 音量
+                {"per", 0},  // 发音人-度小美
+                {"aue", 3} //synthesised audio format is MP3
+            };
+
+            var result = client.Synthesis(words, option);
+
+            if (result.ErrorCode == 0)
+            {
+                File.WriteAllBytes(voiceFilePath, result.Data);
+            }
+            else
+            {
+                throw new Exception(result.ErrorMsg);
+            }
+        }
     }
 }

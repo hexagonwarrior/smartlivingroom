@@ -40,15 +40,15 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(599, 529);
+            this.pictureBox1.Size = new System.Drawing.Size(599, 573);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // lamp_button
             // 
-            this.lamp_button.Location = new System.Drawing.Point(2, 537);
+            this.lamp_button.Location = new System.Drawing.Point(2, 582);
             this.lamp_button.Name = "lamp_button";
-            this.lamp_button.Size = new System.Drawing.Size(75, 23);
+            this.lamp_button.Size = new System.Drawing.Size(75, 25);
             this.lamp_button.TabIndex = 1;
             this.lamp_button.Text = "lamp";
             this.lamp_button.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // 
             // tv_button
             // 
-            this.tv_button.Location = new System.Drawing.Point(83, 537);
+            this.tv_button.Location = new System.Drawing.Point(83, 582);
             this.tv_button.Name = "tv_button";
-            this.tv_button.Size = new System.Drawing.Size(75, 23);
+            this.tv_button.Size = new System.Drawing.Size(75, 25);
             this.tv_button.TabIndex = 3;
             this.tv_button.Text = "tv";
             this.tv_button.UseVisualStyleBackColor = true;
@@ -66,29 +66,31 @@
             // 
             // record_button
             // 
-            this.record_button.Location = new System.Drawing.Point(444, 537);
+            this.record_button.Location = new System.Drawing.Point(444, 582);
             this.record_button.Name = "record_button";
-            this.record_button.Size = new System.Drawing.Size(75, 23);
+            this.record_button.Size = new System.Drawing.Size(75, 25);
             this.record_button.TabIndex = 5;
             this.record_button.Text = "record";
             this.record_button.UseVisualStyleBackColor = true;
+            this.record_button.Visible = false;
             this.record_button.Click += new System.EventHandler(this.record_button_Click);
             // 
             // stop_button
             // 
-            this.stop_button.Location = new System.Drawing.Point(525, 537);
+            this.stop_button.Location = new System.Drawing.Point(525, 582);
             this.stop_button.Name = "stop_button";
-            this.stop_button.Size = new System.Drawing.Size(75, 23);
+            this.stop_button.Size = new System.Drawing.Size(75, 25);
             this.stop_button.TabIndex = 6;
             this.stop_button.Text = "stop";
             this.stop_button.UseVisualStyleBackColor = true;
+            this.stop_button.Visible = false;
             this.stop_button.Click += new System.EventHandler(this.stop_button_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 562);
+            this.ClientSize = new System.Drawing.Size(604, 609);
             this.Controls.Add(this.stop_button);
             this.Controls.Add(this.record_button);
             this.Controls.Add(this.tv_button);
